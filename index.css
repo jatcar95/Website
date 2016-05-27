@@ -1,0 +1,48 @@
+body {
+	text-align: center;
+	font-family: monofur, monospace;
+}
+
+.tile {
+	position: fixed;
+	width: 35vw;
+	height: 30vh;
+	border: solid red 2px;
+}
+
+.tile:hover {
+	border: solid blue 2px;
+}
+
+#nw, #ne {
+	top: 20vh;
+}
+
+#ne, #se {
+	right: 10vw;
+}
+
+#se, #sw {
+	bottom: 10vh;
+}
+
+#sw, #nw {
+	left: 10vw;
+}
+
+#nw {
+	background-image: url("pictures/Resume.png");
+	background-position: center top;
+	background-size: 100%;
+}
+
+#nw:hover {
+	background-image: url("pictures/Resume_unblurred.png");
+	animation-name: unblur;
+	animation-duration: .5s;
+}
+
+@keyframes unblur {
+	from {background-image: url("pictures/Resume.png");}
+	to {background-image: url("pictures/Resume_unblurred.png");}
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jake's CSS Validator</title>
+	<link rel="stylesheet" type="text/css" href="CSSValidator.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="CSSValidator.js"></script>	
+</head>
+<body>
+	<h1>CSS Validator</h1>
+	<h2>(just checks if there are redundant lines, really dumb)</h2>
+	<p>Paste the CSS you'd like to validate in the box below, then click "validate":</p>
+	<div>
+		<textarea id="text" placeholder="Paste CSS here" rows=10 cols=75></textarea>
+	</div>
+	<div>
+		<button id="validate">Validate!</button>		
+	</div>
+	<p>Results appear here after you click "validate":</p>
+	<div id="results"></div>
+</body>
+</html>

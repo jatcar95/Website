@@ -1,0 +1,62 @@
+table {
+	border-spacing: 0px;
+	border: solid black 2px;
+}
+
+td {
+	border: solid gray 2px;
+	width: 10vmin;
+	height: 10vmin;
+}
+
+.piece {
+	border: solid white 2px;
+	border-radius: 50%;
+	width: 8vmin;
+	height: 8vmin;
+	margin: auto;
+}
+
+.selected {
+	border: solid lime 5px;
+}
+
+.possibleSpot {
+	border: solid gold 2px;
+	background-color: darkgoldenrod;
+}
+
+.possibleSpot:hover {
+	border: solid yellow 2px;
+	background-color: goldenrod;
+}
+
+.possibleJump {
+	border: solid red 2px;
+	background-color: darkred;
+}
+
+.possibleJump:hover {
+	border: solid tomato 2px;
+	background-color: red;
+}
+
+.dark {
+	background-color: black;
+}
+
+.light {
+	background-color: lightgray;
+}
+
+#board {
+	display: inline-block;
+	margin: 2vmin;
+	text-align: center;
+}
+
+#gameInfo {
+	display: inline-block;
+	margin: 5vmin;
+	vertical-align: top;
+}

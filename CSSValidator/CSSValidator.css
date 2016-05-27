@@ -1,0 +1,21 @@
+body {
+	font-family: monofur, monospace;
+}
+
+button {
+	background-color: red;
+	border: none;
+	color: white;
+	font-family: monofur, monospace;
+	font-size: 16px;
+	height: 3vmax;
+	width: 10vmax;
+}
+
+#results {
+	border: dotted black 2px;
+}
+
+#results div {
+	margin: 10px;
+}
