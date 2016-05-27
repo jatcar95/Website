@@ -134,5 +134,5 @@ input:checked + .slider {
 }
 
 label > div {
-	margin: 1vmax;
+	/*margin: 1vmax;*/
 }
