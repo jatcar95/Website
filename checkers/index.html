@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checkers</title>
+	<link rel="stylesheet" type="text/css" href="checkers.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript" src="checkers.js"></script>
+</head>
+<body>
+	<div id="options">
+		<h1>Options</h1>
+		<label>
+			<div>Single Player</div>
+			<label class="switch">
+				<input type="checkbox">
+				<div class="slider"></div>
+			</label>		
+		</label>
+
+
+	</div>
+	<div id="playArea">
+		<div id="board"></div>
+		<div id="gameInfo">
+			<p id="turn">It's player 1's turn</p>
+			Player 1's Score: <span id="player1Score">0</span>
+			<br/>
+			Player 2's Score: <span id="player2Score">0</span>	
+		</div>
+	</div>
+</body>
+</html>

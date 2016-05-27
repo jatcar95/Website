@@ -35,9 +35,9 @@ function placePieces() {
 	for (var i = 1; i <= 2; i++) {
 		for (var j = 1; j <= 8; j++) {
 			if ((i + j) % 2 == 0) {
-				game.placePiece(new Piece("goldenrod", true, j, i), j, i);
+				game.placePiece(new Piece(true, j, i), j, i);
 			} else {
-				game.placePiece(new Piece("purple", false, j, i), j, -i + 9);
+				game.placePiece(new Piece(false, j, i), j, -i + 9);
 			}
 		}
 	}
@@ -218,6 +218,15 @@ function Board() {
 			this.board[realX][realY] = piece;
 			piece.x = x;
 			piece.y = y;
+			if (piece.isPlayer1sPiece) {
+				if (piece.y == this.board.length) {
+					piece.kingMe();
+				}
+			} else {
+				if (piece.y == 1) {
+					piece.kingMe();
+				}
+			}
 			this.drawBoard();
 		}
 	};
@@ -228,7 +237,6 @@ function Board() {
 		if (!jump) {
 			this.isPlayer1sTurn = !this.isPlayer1sTurn;
 			this.numTurns++;
-			var turn = "";
 			if (game.gameOver()) {
 				$("#turn").text("Congrats! You won!");
 			} else if (game.isPlayer1sTurn) {
@@ -239,7 +247,6 @@ function Board() {
 		}
 		$("#player1Score").text(game.player1Score);
 		$("#player2Score").text(game.player2Score);
-		console.log(this.gameOver());
 	};
 
 	this.getPiece = function(x, y) {
@@ -298,9 +305,13 @@ function Board() {
 						$(spot).empty();
 						var physicalPiece = document.createElement("div");
 						$(physicalPiece).addClass("piece");
-						$(physicalPiece).css("background-color", piece.color);
+						if (piece.isPlayer1sPiece) {
+							$(physicalPiece).addClass("p1Piece");
+						} else {
+							$(physicalPiece).addClass("p2Piece");
+						}
 						if (piece.king) {
-							$(physicalPiece).css("border-color", "gold");
+							$(physicalPiece).addClass("king");
 						}
 						$(spot).append(physicalPiece);
 					} else { // the piece is in the right spot, reset some styles
@@ -313,11 +324,33 @@ function Board() {
 			}
 		}
 	};
+
+	this.clone = function() {
+		var result = new Board();
+		for (var i = 0; i < this.board.length; i++) {
+			for (var j = 0; j < this.board[i].length; j++) {
+				var currentPiece = this.board[i][j];
+				if (currentPiece) {
+					result.board[i][j] = currentPiece.clone();
+				}
+			}
+		}
+		result.selectedPiece = this.selectedPiece;
+		result.selectSpots = this.selectSpots;
+		result.isPlayer1sTurn = this.isPlayer1sTurn;
+		result.numTurns = this.numTurns;
+		result.player1Score = this.player1Score;
+		result.player2Score = this.player2Score;
+		return result;
+	};
+
+	this.evaluate = function() {
+		return this.player1Score - this.player2Score;
+	};
 }
 
-function Piece(color, player, x, y) {
+function Piece(player, x, y) {
 	this.isPlayer1sPiece = player;
-	this.color = color;
 	this.king = false;
 	this.x = x;
 	this.y = y;
@@ -444,6 +477,14 @@ function Piece(color, player, x, y) {
 					}
 				}
 			}
+		}
+		return result;
+	};
+
+	this.clone = function() {
+		var result = new Piece(this.isPlayer1sPiece, this.x, this.y);
+		if (this.king) {
+			result.kingMe();
 		}
 		return result;
 	};

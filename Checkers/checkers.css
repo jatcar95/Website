@@ -1,29 +1,35 @@
+body {
+	font-family: arial;
+}
+
 table {
+	border: solid lightgray 2px;
 	border-spacing: 0px;
-	border: solid black 2px;
 }
 
 td {
-	border: solid gray 2px;
 	width: 10vmin;
 	height: 10vmin;
+	border: solid gray 2px;
 }
 
 .piece {
-	border: solid white 2px;
-	border-radius: 50%;
+	margin: auto;
 	width: 8vmin;
 	height: 8vmin;
-	margin: auto;
+	border: solid rgb(0, 102, 102) 2px;
+	border-radius: 50%;
 }
 
 .selected {
 	border: solid lime 5px;
+	cursor: pointer;
 }
 
 .possibleSpot {
 	border: solid gold 2px;
 	background-color: darkgoldenrod;
+	cursor: pointer;
 }
 
 .possibleSpot:hover {
@@ -34,6 +40,7 @@ td {
 .possibleJump {
 	border: solid red 2px;
 	background-color: darkred;
+	cursor: pointer;
 }
 
 .possibleJump:hover {
@@ -42,7 +49,7 @@ td {
 }
 
 .dark {
-	background-color: black;
+	background-color: white;
 }
 
 .light {
@@ -59,4 +66,73 @@ td {
 	display: inline-block;
 	margin: 5vmin;
 	vertical-align: top;
+}
+
+.king {
+	border-color: gold;
+}
+
+.p1Piece {
+	background-color: rgb(50, 205, 182);
+}
+
+.p2Piece {
+	background-color: rgb(255, 0, 102);
+}
+
+#playArea {
+	display: none;
+}
+
+.switch input {
+	display: none;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 6vmax;
+	height: 3vmax;
+}
+
+.slider {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #ccc;
+	cursor: pointer;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+.slider::before {
+	position: absolute;
+	top: .5vmax;
+	left: .5vmax;
+	width: 2vmax;
+	height: 2vmax;
+	background-color: white;
+	content: "";
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+input:checked + .slider::before {
+	-webkit-transform: translateX(3vmax);
+	-ms-transform: translateX(3vmax);
+	transform: translateX(2.75vmax);
+}
+
+input:checked + .slider {
+	background-color: rgb(204, 0, 82);
+}
+
+#options {
+	text-align: center;
+}
+
+label > div {
+	margin: 1vmax;
 }
