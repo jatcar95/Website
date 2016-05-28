@@ -20,7 +20,7 @@
 			// show singleplayer options
 			options.addClass("single");
 			options.removeClass("multi");
-			playerNum.text("Single Player");
+			playerNum.text("Single Player (not currently implemented)");
 			single.show();
 			multi.hide();
 		} else {
