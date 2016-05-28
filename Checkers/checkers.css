@@ -99,6 +99,7 @@ button {
 
 #playArea {
 	display: none;
+	text-align: center;
 }
 
 .switch input {
