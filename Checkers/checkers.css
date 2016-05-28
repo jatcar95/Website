@@ -36,6 +36,8 @@ button {
 	height: 8vmin;
 	border: solid rgb(0, 102, 102) 2px;
 	border-radius: 50%;
+	transition: .3s;
+	-webkit-transition: .3s;
 }
 
 .selected {
@@ -47,6 +49,8 @@ button {
 	border: solid gold 2px;
 	background-color: darkgoldenrod;
 	cursor: pointer;
+	transition: .3s;
+	-webkit-transition: .3s;
 }
 
 .possibleSpot:hover {
@@ -58,6 +62,8 @@ button {
 	border: solid red 2px;
 	background-color: darkred;
 	cursor: pointer;
+	transition: .5s;
+	-webkit-transition: .5s;
 }
 
 .possibleJump:hover {

@@ -52,7 +52,7 @@
 				error("Please enter your name");
 			} else {
 				// start the game
-				playGame(1, p1Name);
+				playGame(1, name);
 			}
 		} else {
 			// get names from input boxes
@@ -82,12 +82,12 @@
 	}
 
 	// starts the game by showing the board
-	function playGame(numPlayers, p1Name, p2Name) {
+	function playGame(numPlayers, p1Name, p2Name="Computer Overlord") {
 		// construct appropriate board
 		if (numPlayers == 1) {
 			game = new Board(numPlayers, p1Name);
 		} else {
-			game = new Board(2, p1Name, p2Name);
+			game = new Board(numPlayers, p1Name, p2Name);
 		}
 		// hide options, shows the actual game
 		$("#options").hide();
