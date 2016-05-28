@@ -1,10 +1,8 @@
 "use strict";
 
-var game = new Board();
+var game;
 
 $(document).ready(function() {
-	makeBoard();
-	placePieces();
 	$(document).on("mouseenter", ".piece", highlightMovable);
 	$(document).on("mouseleave", ".piece", resetNormal);
 	$(document).on("click", ".piece", selectPiece);
@@ -179,7 +177,7 @@ function getBetween(from, to) {
 	return [resultX, resultY];
 }
 
-function Board() {
+function Board(numPlayers, p1Name, p2Name = "Computer Overlord") {
 	this.board = new Array(8);
 	for (var i = 0; i < this.board.length; i++) {
 		this.board[i] = new Array(8);
@@ -193,6 +191,9 @@ function Board() {
 	this.numTurns = 0;
 	this.player1Score = 0;
 	this.player2Score = 0;
+	this.numPlayers = numPlayers;
+	this.p1Name = p1Name;
+	this.p2Name = p2Name;
 
 	this.removePiece = function(x, y) {
 		if (!this.inBounds(x, y)) {
@@ -238,11 +239,16 @@ function Board() {
 			this.isPlayer1sTurn = !this.isPlayer1sTurn;
 			this.numTurns++;
 			if (game.gameOver()) {
-				$("#turn").text("Congrats! You won!");
-			} else if (game.isPlayer1sTurn) {
-				$("#turn").text("It's player 1's turn");
+				if (this.isPlayer1sTurn) {
+					$("#turn").text("Congrats " + this.p2Name + "! You won!");
+				} else {
+					$("#turn").text("Congrats " + this.p1Name + "! You won!");
+				}
+
+			} else if (this.isPlayer1sTurn) {
+				$("#turn").text("It's " + this.p1Name + "'s turn");
 			} else {
-				$("#turn").text("It's player 2's turn");
+				$("#turn").text("It's " + this.p2Name + "'s turn");
 			}
 		}
 		$("#player1Score").text(game.player1Score);

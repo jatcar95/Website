@@ -3,29 +3,54 @@
 <head>
 	<title>Checkers</title>
 	<link rel="stylesheet" type="text/css" href="checkers.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script language="javascript" type="text/javascript" src="checkers.js"></script>
+	<script type="text/javascript" src="../jquery.js"></script>
+	<script type="text/javascript" src="checkers.js"></script>
+	<script type="text/javascript" src="checkers_options.js"></script>
 </head>
 <body>
 	<div id="options">
 		<h1>Options</h1>
 		<label>
-			<div>Single Player</div>
-			<label class="switch">
-				<input id="singlePlayer" type="checkbox">
+			<span id="playerNum">Multiplayer</span>
+			<label class="switch" id="singlePlayer">
+				<input type="checkbox">
 				<div class="slider"></div>
-			</label>		
+			</label>						
 		</label>
-
-
+		<div id="playerOptions">
+			<div id="error"></div>
+			<div id="multiplayerOptions">
+				<div>
+					<h2>Player 1's Name</h2>
+					<input id="p1" type="text">					
+				</div>
+				<div>
+					<h2>Player 2's Name</h2>
+					<input id="p2" type="text">					
+				</div>
+			</div>
+			<div id="singleplayerOptions">
+				<div>
+					<h2>Your name:</h2>
+					<input type="text">					
+				</div>
+				<div>
+					<h2>Difficulty:</h2>
+					Easy <input type="radio" name="difficulty" value="easy">
+					Medium <input type="radio" name="difficulty" value="medium" checked>
+					Hard <input type="radio" name="difficulty" value="hard">					
+				</div>
+			</div>
+		</div>
+		<button id="play">Play</button>
 	</div>
 	<div id="playArea">
 		<div id="board"></div>
 		<div id="gameInfo">
 			<p id="turn">It's player 1's turn</p>
-			Player 1's Score: <span id="player1Score">0</span>
+			<span id="p1Name">Player 1</span>'s Score: <span id="player1Score">0</span>
 			<br/>
-			Player 2's Score: <span id="player2Score">0</span>	
+			<span id="p2Name">Player 2</span>'s Score: <span id="player2Score">0</span>	
 		</div>
 	</div>
 </body>
